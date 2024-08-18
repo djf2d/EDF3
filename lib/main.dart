@@ -12,7 +12,7 @@ class MainMenu extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(" TITLE "),
+          title: const Text(" EDF3 "),
         ),
         body: const Center(
           child: Text("Centered"),
