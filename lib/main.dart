@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'features/cards/presentation/widgets/OurCoolWidget.dart';
+import 'features/cards/presentation/widgets/CardWidget.dart';
+import 'features/cards/presentation/widgets/NavigationWidget.dart';
 
 void main() {
   runApp(const MainMenu());
 }
 
 class MainMenu extends StatelessWidget {
-  // final String cardNumber = 'XXXX XXXX XXXX XXXX';
-  // final String expiryDate = 'MM/YY';
-  // final String cardHolderName = 'Card Holder';
-  // final String cvvCode = '123';
-  // final bool isCvvFocused = false;
-
   const MainMenu({super.key});
 
   @override
@@ -25,6 +19,7 @@ class MainMenu extends StatelessWidget {
         body: Center(
           child: CreditCard(),
         ),
+        bottomNavigationBar: Navigation(),
       ),
     );
   }
