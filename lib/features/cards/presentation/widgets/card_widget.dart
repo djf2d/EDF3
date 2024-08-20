@@ -1,0 +1,175 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+class CreditCard extends StatefulWidget {
+  const CreditCard({super.key});
+
+  @override
+  State<CreditCard> createState() => _CreditCardState();
+}
+
+class _CreditCardState extends State<CreditCard> {
+  double horizontalDrag = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragUpdate: (horizontal) {
+        setState(() {
+          horizontalDrag += horizontal.delta.dx;
+          horizontalDrag %= 360;
+        });
+      },
+      child: Transform(
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, 0.001)
+          ..rotateY(pi / 180 * horizontalDrag),
+        alignment: Alignment.center,
+        child: Container(
+          width: 300,
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: const LinearGradient(
+              colors: [Color.fromARGB(255, 13, 66, 200), Color(0xff000000)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: horizontalDrag <= 90 || horizontalDrag >= 270
+              ? cardFront()
+              : cardBack(),
+        ),
+      ),
+    );
+  }
+
+  Widget cardFront() {
+    return Container(
+      padding: const EdgeInsets.all(18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const Row(
+            children: <Widget>[
+              Text(
+                'Islamic Bank',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10,
+                ),
+              ),
+              Text(
+                '|',
+                style: TextStyle(
+                  color: Colors.grey,
+                  letterSpacing: 10,
+                  fontSize: 10,
+                ),
+              ),
+              Text(
+                'Universal Bank',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 10,
+                ),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          Container(
+            width: 60,
+            height: 40,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 0),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.black, width: 1),
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 8,
+                  top: 8,
+                  child: Container(
+                    width: 10,
+                    height: 24,
+                    color: Colors.black,
+                  ),
+                ),
+                Positioned(
+                  left: 20,
+                  top: 8,
+                  child: Container(
+                    width: 10,
+                    height: 24,
+                    color: Colors.black,
+                  ),
+                ),
+                Positioned(
+                  left: 32,
+                  top: 8,
+                  child: Container(
+                    width: 10,
+                    height: 24,
+                    color: Colors.black,
+                  ),
+                ),
+                Positioned(
+                  left: 44,
+                  top: 8,
+                  child: Container(
+                    width: 10,
+                    height: 24,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            '1234 5678 9101 1121',
+            style: TextStyle(
+                color: Colors.grey[300],
+                fontSize: 18,
+                wordSpacing: 15,
+                shadows: const [
+                  BoxShadow(
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                    color: Colors.black,
+                    offset: Offset(2, 2),
+                  )
+                ]),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            '05 / 20',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget cardBack() {
+    return Container(
+      padding: const EdgeInsets.only(top: 18),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 50,
+            color: Colors.grey[700],
+          )
+        ],
+      ),
+    );
+  }
+}
