@@ -1,0 +1,1 @@
+ C:\\Users\\folat\\EDF3\\.dart_tool\\flutter_build\\c842a85577988c1d1943c3a1e3ce063d\\native_assets.yaml: 

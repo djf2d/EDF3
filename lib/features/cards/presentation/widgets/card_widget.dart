@@ -27,11 +27,14 @@ class _CreditCardState extends State<CreditCard> {
         alignment: Alignment.center,
         child: Container(
           width: 300,
-          height: 200,
+          height: 180,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             gradient: const LinearGradient(
-              colors: [Color.fromARGB(255, 13, 66, 200), Color(0xff000000)],
+              colors: [
+                Color(0xFF0055FF),
+                Color(0xFFA0BFFF)
+              ], // Updated gradient colors
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -46,113 +49,79 @@ class _CreditCardState extends State<CreditCard> {
 
   Widget cardFront() {
     return Container(
-      padding: const EdgeInsets.all(18),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.all(20),
+      child: Stack(
         children: <Widget>[
-          const Row(
-            children: <Widget>[
-              Text(
-                'Islamic Bank',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
-                ),
-              ),
-              Text(
-                '|',
-                style: TextStyle(
-                  color: Colors.grey,
-                  letterSpacing: 10,
-                  fontSize: 10,
-                ),
-              ),
-              Text(
-                'Universal Bank',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 10,
-                ),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Container(
-            width: 60,
-            height: 40,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 255, 255, 0),
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.black, width: 1),
-            ),
-            child: Stack(
+          // Card Holder and Expiry date texts
+          const Positioned(
+            left: 15,
+            top: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Positioned(
-                  left: 8,
-                  top: 8,
-                  child: Container(
-                    width: 10,
-                    height: 24,
-                    color: Colors.black,
+                Text(
+                  'Card Holder',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Positioned(
-                  left: 20,
-                  top: 8,
-                  child: Container(
-                    width: 10,
-                    height: 24,
-                    color: Colors.black,
-                  ),
-                ),
-                Positioned(
-                  left: 32,
-                  top: 8,
-                  child: Container(
-                    width: 10,
-                    height: 24,
-                    color: Colors.black,
-                  ),
-                ),
-                Positioned(
-                  left: 44,
-                  top: 8,
-                  child: Container(
-                    width: 10,
-                    height: 24,
-                    color: Colors.black,
+                SizedBox(height: 4),
+                Text(
+                  'Expiry date',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '1234 5678 9101 1121',
-            style: TextStyle(
-                color: Colors.grey[300],
+          // Card Number
+          const Positioned(
+            left: 5,
+            top: 80,
+            child: Text(
+              'XXXX  XXXX  XXXX  XXXX',
+              style: TextStyle(
+                color: Colors.white,
                 fontSize: 18,
-                wordSpacing: 15,
-                shadows: const [
-                  BoxShadow(
-                    blurRadius: 2,
-                    spreadRadius: 2,
-                    color: Colors.black,
-                    offset: Offset(2, 2),
-                  )
-                ]),
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+              ),
+            ),
           ),
-          const SizedBox(
-            height: 10,
+          // Logo
+          const Positioned(
+            right: 15,
+            top: 20,
+            child: Icon(
+              Icons.account_balance_wallet,
+              color: Colors.white70,
+              size: 30,
+            ),
           ),
-          const Text(
-            '05 / 20',
-            style: TextStyle(color: Colors.grey),
+          // Visa and Contactless Icons
+          Positioned(
+            right: 0,
+            bottom: -5,
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/visa.png',
+                  height: 30,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(width: 10),
+                const Icon(
+                  Icons.wifi,
+                  color: Colors.white70,
+                  size: 24,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -162,12 +131,42 @@ class _CreditCardState extends State<CreditCard> {
   Widget cardBack() {
     return Container(
       padding: const EdgeInsets.only(top: 18),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          colors: [
+            Color(0xFF0055FF),
+            Color(0xFF007BFF)
+          ], // Updated gradient colors
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       child: Column(
         children: <Widget>[
           Container(
-            height: 50,
-            color: Colors.grey[700],
-          )
+            height: 40,
+            color: Colors.black.withOpacity(0.8),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
+            child: Row(
+              children: [
+                Container(
+                  height: 20,
+                  width: 100,
+                  color: Colors.white70,
+                ),
+                const Spacer(),
+                Container(
+                  height: 20,
+                  width: 30,
+                  color: Colors.white70,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
