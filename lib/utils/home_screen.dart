@@ -7,29 +7,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const HomeScreenWidgets(),
-        Stack(
-          children: [
-            // Notification bell icon positioned according to provided dimensions
-            Positioned(
-              width: 24,
-              height: 24,
-              top: 51, // Vertical position relative to the screen
-              right: 51,
-              child: IconButton(
-                icon: const Icon(Icons.notifications_none_sharp,
-                    color: Colors.black),
-                onPressed: () {
-                  // Handle notification icon press
-                },
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
+    return const HomeScreenWidgets();
   }
 }
 
@@ -82,7 +60,8 @@ class HomeScreenWidgets extends StatelessWidget {
                 3,
                 (index) => Padding(
                   padding: const EdgeInsets.symmetric(
-                      vertical: 8.0), // Vertical padding only
+                    vertical: 8.0,
+                  ),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -104,9 +83,12 @@ class HomeScreenWidgets extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(
-                                10), // Rounded icon container
+                              10,
+                            ), // Rounded icon container
                           ),
-                          child: const Center(child: Text("Icon")),
+                          child: const Center(
+                            child: Text("Icon"),
+                          ),
                         ),
                         const SizedBox(width: 10),
                         const Expanded(
@@ -114,9 +96,12 @@ class HomeScreenWidgets extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Title",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(
+                                "Title",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Text("day/month/year"),
                               Text("Type"),
                             ],
