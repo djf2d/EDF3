@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 part 'home_screen_state.dart';
 
-class HomeScreenCubit extends Cubit<HomeScreenState> {
-  HomeScreenCubit() : super(HomeScreenInitial());
+class HomeScreenCubit extends Cubit<HomeScreenStateABS> {
+  HomeScreenCubit() : super(const HomeScreenState());
 }

@@ -1,13 +1,13 @@
+import 'package:edf3/features/navigation/presentation/cubit/navigation_cubit.dart';
 import 'package:edf3/features/home_screen/presentation/widgets/my_icon_widget.dart';
 import 'package:edf3/utils/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
   final String name;
 
   const MyAppBar({
-    required this.title,
     super.key,
     required this.name,
   });
@@ -24,18 +24,23 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      title: Stack(
-        children: [
-          Center(
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 22,
+      title: BlocBuilder<NavigationCubit, NavigationCubitState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Center(
+                child: Text(
+                  screensNames[state.currentScreenIndex]?.$1 ?? "Title",
+                  style: const TextStyle(
+                    fontSize: 22,
+                  ),
+                ),
               ),
-            ),
-          ),
-          if (title == screensNames[0]) MyAppBarBottomRow(name: name),
-        ],
+              if (screensNames[state.currentScreenIndex] == screensNames[0])
+                MyAppBarBottomRow(name: name),
+            ],
+          );
+        },
       ),
       centerTitle: true,
     );
