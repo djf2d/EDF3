@@ -11,33 +11,18 @@ class NavBarRowActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Container(
-        height: 75,
-        width: 75,
-        decoration: const BoxDecoration(
+    return Center(
+      child: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: AppTheme.hightLighted,
+        onPressed: () {
+          onTap(2);
+        },
+        child: Image.asset(
+          AppIcons.qr.getPath(),
           color: Colors.white,
-          shape: BoxShape.circle,
         ),
-        child: Center(
-          child: Container(
-            height: 55,
-            width: 55,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: FloatingActionButton(
-              shape: const CircleBorder(),
-              backgroundColor: AppTheme.hightLighted,
-              onPressed: () {
-                onTap(2);
-              },
-              child: Image.asset(
-                AppIcons.qr.getPath(),
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
+        // ),
       ),
     );
   }

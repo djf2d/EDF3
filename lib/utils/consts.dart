@@ -18,7 +18,7 @@ Map<int, (String, AppIcons)> screensNames = {
     AppIcons.qr,
   ),
   3: (
-    "My Cards",
+    "Cards",
     AppIcons.card,
   ),
   4: ("Profile", AppIcons.profile)
