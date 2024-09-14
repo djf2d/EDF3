@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CreditCard extends StatefulWidget {
@@ -14,47 +13,34 @@ class _CreditCardState extends State<CreditCard> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: GestureDetector(
-        onHorizontalDragUpdate: (horizontal) {
-          setState(() {
-            horizontalDrag += horizontal.delta.dx;
-            horizontalDrag %= 360;
-          });
-        },
-        child: Transform(
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)
-            ..rotateY(pi / 180 * horizontalDrag),
-          alignment: Alignment.center,
-          child: Container(
-            width: 300,
-            height: 180,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFF0044AE),
-                  Color(0xFF042962),
-                  Color(0xFF013586),
-                  Color(0xFF0064FF),
-                  Color(0xFF80B2FF),
-                  // Color(0xFF0055FF),
-                  // Color(0xFFA0BFFF)
-                ], // Updated gradient colors
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-            ),
-            child: horizontalDrag <= 90 || horizontalDrag >= 270
-                ? cardFront()
-                : cardBack(),
+      child: Container(
+        width: 300,
+        height: 180,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF0044AE),
+              Color(0xFF042962),
+              Color(0xFF013586),
+              Color(0xFF0064FF),
+              Color(0xFF80B2FF),
+            ], // Updated gradient colors
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
           ),
         ),
+        child: const CreditCardWidget(),
       ),
     );
   }
+}
 
-  Widget cardFront() {
+class CreditCardWidget extends StatelessWidget {
+  const CreditCardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
       child: Stack(
@@ -126,50 +112,6 @@ class _CreditCardState extends State<CreditCard> {
                   Icons.wifi,
                   color: Colors.white70,
                   size: 24,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardBack() {
-    return Container(
-      padding: const EdgeInsets.only(top: 18),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xFF0055FF),
-            Color(0xFF007BFF)
-          ], // Updated gradient colors
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            height: 40,
-            color: Colors.black.withOpacity(0.8),
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
-            child: Row(
-              children: [
-                Container(
-                  height: 20,
-                  width: 100,
-                  color: Colors.white70,
-                ),
-                const Spacer(),
-                Container(
-                  height: 20,
-                  width: 30,
-                  color: Colors.white70,
                 ),
               ],
             ),

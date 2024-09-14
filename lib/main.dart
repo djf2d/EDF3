@@ -26,9 +26,12 @@ class _MainMenuState extends State<MainMenu> {
           create: (context) => NavigationCubit(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        theme: ThemeData(
+          fontFamily: 'AbhayaLibre',
+        ),
+        home: const MainScreen(),
       ),
     );
   }

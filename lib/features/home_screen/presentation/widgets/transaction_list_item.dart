@@ -9,7 +9,10 @@ class TransactionListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: Colors.grey.withOpacity(0.15),
+        ),
       ),
       child: Row(
         children: [

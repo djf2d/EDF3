@@ -17,4 +17,16 @@ class AppTheme {
       // stops: [0, 1.0], // Matches the gradient stops you provided
     ),
   );
+
+  static const TextStyle bottomNavigationBarHighlighted = TextStyle(
+      fontSize: 12,
+      color: hightLighted,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'AbhayaLibre');
+  static const TextStyle bottomNavigationBarNotHighlighted = TextStyle(
+    fontSize: 12,
+    color: notHightLighted,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'AbhayaLibre',
+  );
 }

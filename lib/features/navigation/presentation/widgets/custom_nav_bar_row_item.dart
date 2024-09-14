@@ -94,7 +94,12 @@ class ButtonNavigationBarItem extends StatelessWidget {
             (icon != AppIcons.qr
                 ? [
                     image,
-                    Text(text),
+                    Text(
+                      text,
+                      style: isHightLighted
+                          ? AppTheme.bottomNavigationBarHighlighted
+                          : AppTheme.bottomNavigationBarNotHighlighted,
+                    ),
                   ]
                 : []),
       ),
