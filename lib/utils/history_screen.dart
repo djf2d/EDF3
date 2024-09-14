@@ -1,3 +1,4 @@
+import 'package:edf3/features/home_screen/presentation/widgets/transaction_list_item.dart';
 import 'package:edf3/utils/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -68,50 +69,11 @@ class HistoryScreen extends StatelessWidget {
             ),
           ),
           ...List.generate(
-            3,
-            (index) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 5,
-                      spreadRadius: 1,
-                    )
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      color: Colors.grey[300],
-                      child: const Center(child: Text("Icon")),
-                    ),
-                    const SizedBox(width: 10),
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Title"),
-                        Text("day/month/year"),
-                        Text("Type"),
-                      ],
-                    ),
-                    const Spacer(),
-                    const Text(
-                      "Price in JOD",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+              3,
+              (index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    child: TransactionListItem(),
+                  )),
         ],
       ),
     );

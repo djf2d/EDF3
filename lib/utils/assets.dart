@@ -3,7 +3,10 @@ enum AppIcons with AppIconsName {
   home("home"),
   history("history"),
   qr("qr"),
-  profile("profile");
+  profile("profile"),
+  transfer("transfer"),
+  sellItems("sell-items"),
+  donate("donate");
 
   const AppIcons(this.name);
 

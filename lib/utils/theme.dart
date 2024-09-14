@@ -11,9 +11,10 @@ class AppTheme {
       end: Alignment.bottomCenter,
       colors: [
         Color(0xFFFFFFFF), // White color
+        Color(0xFFFFFFFF), // White color
         Color(0xFF999999), // Gray color
       ],
-      stops: [0, 1.0], // Matches the gradient stops you provided
+      // stops: [0, 1.0], // Matches the gradient stops you provided
     ),
   );
 }
