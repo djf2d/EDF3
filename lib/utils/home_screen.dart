@@ -1,6 +1,8 @@
+import 'package:edf3/utils/app_router.dart';
 import 'package:edf3/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:edf3/utils/theme.dart';
+import 'package:go_router/go_router.dart';
 import '../features/cards/presentation/widgets/card_widget.dart';
 import '../features/home_screen/presentation/widgets/custom_home_button.dart';
 import '../features/home_screen/presentation/widgets/transaction_list_item.dart'; // Import your CreditCard widget
@@ -49,18 +51,23 @@ class HomeScreenWidgets extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 40), // Spacing for better readability
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Transactions",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                Text(
-                  "See All",
-                  style: TextStyle(
-                    color: AppTheme.hightLighted,
-                    fontWeight: FontWeight.bold,
+                TextButton(
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.transactionsScreen);
+                  },
+                  child: const Text(
+                    "See All",
+                    style: TextStyle(
+                      color: AppTheme.hightLighted,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],

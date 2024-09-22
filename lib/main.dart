@@ -1,6 +1,7 @@
 import 'package:edf3/features/navigation/presentation/cubit/navigation_cubit.dart';
 import 'package:edf3/features/home_screen/presentation/widgets/my_app_bar.dart';
 import 'package:edf3/features/navigation/presentation/widgets/navigation_widget.dart';
+import 'package:edf3/utils/app_router.dart';
 import 'package:edf3/utils/consts.dart';
 import 'package:edf3/utils/theme.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,9 @@ class _MainMenuState extends State<MainMenu> {
           create: (context) => NavigationCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: 'AbhayaLibre',
-        ),
-        home: const MainScreen(),
       ),
     );
   }

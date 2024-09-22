@@ -21,6 +21,7 @@ class CustomNavBarRow extends StatelessWidget {
             child: ColoredBox(
               color: Colors.transparent,
               child: NavBarRowActionButton(
+                heroTag: 'paintTag',
                 onTap: (value) {
                   // IGNORE
                 },
@@ -29,6 +30,7 @@ class CustomNavBarRow extends StatelessWidget {
           ),
           const BottomNavigationBarAligned(),
           NavBarRowActionButton(
+            heroTag: 'buttonTag',
             onTap: (value) =>
                 context.read<NavigationCubit>().changeScreen(value),
           ),
